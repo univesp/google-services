@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    command: puma -p 9393
+    ports:
+      - "9393:9393"
+    environment:
+      - RACK_ENV=production
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
